@@ -119,7 +119,39 @@ a:hover {
   text-align: center;
 }
 
+@keyframes socialIconBounce {
+  0% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0));
+  }
+  50% {
+    transform: translateY(-10px) scale(1.1);
+    filter: drop-shadow(0 8px 15px rgba(255, 255, 255, 0.5));
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0));
+  }
+}
+
+@keyframes socialIconGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 1)) drop-shadow(0 0 20px rgba(210, 241, 228, 0.8));
+  }
+}
+
 img.socialIcon {
   height: 30px;
   width: 30px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+  cursor: pointer;
+  animation: socialIconGlow 3s ease-in-out infinite;
+}
+
+img.socialIcon:hover {
+  animation: socialIconBounce 0.6s ease-in-out forwards, socialIconGlow 0.6s ease-in-out;
+  transform: scale(1.2) rotate(5deg);
 }
